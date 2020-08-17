@@ -1,0 +1,28 @@
+INSERT INTO oauth_client_details (client_id, client_secret, web_server_redirect_uri, scope, access_token_validity, refresh_token_validity, resource_ids, authorized_grant_types, additional_information) 
+VALUES ('clientId', '{bcrypt}$2a$10$.zNAIt93U6CmJQJvYGaA5uJfFVoyBtqS8aS0OUBytrZSjAWBYr3Be', 'http://localhost:8080/code', 'READ,WRITE', '3600', '10000', 'vital-trend-service', 'authorization_code,password,refresh_token,implicit', '{}');
+
+ INSERT INTO permission (name) VALUES
+ ('create_profile'),
+ ('read_profile'),
+ ('update_profile'),
+ ('delete_profile');
+
+ INSERT INTO role (name) VALUES
+		('ROLE_admin'),('ROLE_operator');
+
+ INSERT INTO permission_role (PERMISSION_ID, ROLE_ID) VALUES
+     (1,1), /*create-> admin */
+     (2,1), /* read admin */
+     (3,1), /* update admin */
+     (4,1), /* delete admin */
+     (2,2),  /* read operator */
+     (3,2);  /* update operator */
+insert into user (id, username,password, email, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked) 
+VALUES ('1', 'sundar','{bcrypt}$2a$10$.zNAIt93U6CmJQJvYGaA5uJfFVoyBtqS8aS0OUBytrZSjAWBYr3Be', 'sundar@gmail.com', '1', '1', '1', '1');
+ insert into  user (id, username,password, email, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked)
+  VALUES ('2', 'moorthi', '{bcrypt}$2a$10$.zNAIt93U6CmJQJvYGaA5uJfFVoyBtqS8aS0OUBytrZSjAWBYr3Be','moorthi@gmail.com', '1', '1', '1', '1');
+
+INSERT INTO role_user (role_id, user_id)
+    VALUES
+    (1, 1) /* sundar-admin */,
+    (2, 2) /* moorthi-operatorr */ ;

@@ -1,0 +1,27 @@
+# Spring Boot Actuator
+spring:
+  cloud:
+    config:
+       uri: http://localhost:8888
+  kafka:
+    producer:
+      bootstrap-servers: 127.0.0.1:9092     
+  cache:
+    type: redis   
+  redis:
+    host: localhost
+    port: 6379    
+       
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
+        
+security:
+  oauth2:
+    resource:
+      token-info-uri: http://localhost:9191/oauth/check_token
+    client:
+      client-id: clientId
+      client-secret: secret
